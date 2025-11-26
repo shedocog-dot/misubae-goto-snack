@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misubae | Your Favorite Musubi, Your Everyday Bae!</title>
+    <link rel="icon" href="misubae_logo.png" type="image/png"> 
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Clean Styling */
+        :root {
+            --color-primary-red: #D62828;
+            --color-white: #FFFFFF;
+            --color-accent: #FFF4E6;
+            --font-heading: 'Baloo 2', cursive;
+            --font-body: 'Poppins', sans-serif;
+            --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-red: 0 8px 15px rgba(214, 40, 40, 0.4);
+        }
+
+        /* Base Reset and Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--color-white);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-primary-red);
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 1rem;
+        }
+
+        section {
+            padding: 4rem 10%;
+            position: relative;
+        }
+        
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--color-white);
+            background-color: var(--color-primary-red);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .btn:hover {
+            background-color: #A31E1E; /* Darker red on hover */
+            box-shadow: var(--shadow-red);
+            transform: translateY(-2px);
+        }
+        
+        .text-center { text-align: center; }
+
+        /* --- 1. Hero Section --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* **APPLIED FIX:** Background Image with Red Overlay. Replace 'your_hero_background.jpg' with your image file name. */
+            background: linear-gradient(rgba(214, 40, 40, 0.7), rgba(214, 40, 40, 0.7)), 
+                    url('your_hero_background.jpg') no-repeat center center/cover;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Subtle Musubi pattern overlay (conceptual) */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: url('musubi_pattern_light.png') repeat; /* Placeholder for a subtle musubi image overlay */
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .hero-logo img {
+            max-width: 300px;
+            width: 80vw;
+            height: auto;
+            border-radius: 50%;
+            background-color: var(--color-white); /* Ensures the logo stands out */
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-tagline {
+            margin: 2rem 0 3rem;
+            font-size: 2.5rem;
+            color: var(--color-white);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            font-family: var(--font-heading);
+            font-weight: 800;
+        }
+
+        .hero-buttons .btn {
+            margin: 0 1rem;
+            min-width: 150px;
+            background-color: var(--color-white);
+            color: var(--color-primary-red);
+        }
+
+        .hero-buttons .btn:hover {
+            background-color: var(--color-accent);
+            color: var(--color-primary-red);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Header Logo Styling */
+        .header-logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .header-logo-container img {
+            height: 40px; /* Adjust size as needed */
+            width: auto;
+            margin-right: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* --- 2. About Us Section --- */
+        #about {
+            background-color: var(--color-accent);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 2;
+            padding: 1rem;
+        }
+
+        .about-quote {
+            background-color: var(--color-white);
+            padding: 1.5rem;
+            border-left: 5px solid var(--color-primary-red);
+            margin-top: 1.5rem;
+            font-style: italic;
+            border-radius: 0 10px 10px 0;
+            box-shadow: var(--shadow-light);
+        }
+        
+        .about-quote p {
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        /* --- 3. Menu Section --- */
+        #menu {
+            background-color: var(--color-white);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .menu-card {
+            background-color: var(--color-accent);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-red);
+            border-color: var(--color-primary-red);
+        }
+
+        .menu-card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .menu-card-body {
+            padding: 1.5rem;
+        }
+
+        .menu-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-desc {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .menu-card-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--color-primary-red);
+            font-family: var(--font-heading);
+        }
+
+        .menu-order-btn {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        /* --- 4. Order Online Page (Simulated via an Anchor) --- */
+        #order-online {
+             background-color: var(--color-white);
+        }
+
+        .order-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--color-accent);
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-primary-red);
+        }
+
+        .order-form input[type="text"],
+        .order-form input[type="email"],
+        .order-form input[type="tel"],
+        .order-form select,
+        .order-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .order-form input:focus,
+        .order-form select:focus,
+        .order-form textarea:focus {
+            border-color: var(--color-primary-red);
+            outline: none;
+        }
+
+        .order-form textarea {
+            resize: vertical;
+        }
+
+        .order-form .form-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-form .form-group > div {
+            flex: 1;
+        }
+
+        .order-form-radio {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-form-radio input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        .confirmation-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: var(--color-primary-red);
+            color: var(--color-white);
+            border-radius: 8px;
+            text-align: center;
+            display: none; /* Hidden by default */
+            font-weight: 600;
+        }
+
+        /* --- 5. Gallery Section --- */
+        #gallery {
+            background-color: var(--color-accent);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(214, 40, 40, 0.85); /* Semi-transparent red */
+            color: var(--color-white);
+            padding: 0.5rem;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* --- 6. Contact Section --- */
+        #contact {
+            background-color: var(--color-white);
+        }
+        
+        .contact-content {
+            display: flex;
+            max-width: 900px;
+            margin: 0 auto;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info div {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info a {
+            color: var(--color-primary-red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-form-container {
+            flex: 1;
+            padding: 2rem;
+            background-color: var(--color-accent);
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+        }
+
+        /* Reusing form styles from #order-online for the contact form */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        /* --- 7. Footer --- */
+        footer {
+            background-color: var(--color-primary-red);
+            color: var(--color-white);
+            padding: 2rem 10%;
+            text-align: center;
+        }
+
+        .footer-slogan {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--color-white);
+            font-size: 1.8rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--color-accent);
+            transform: scale(1.1);
+        }
+
+        .footer-copyright {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Floating Order Now Button */
+        #floating-order-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--color-primary-red);
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: var(--shadow-red);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        #floating-order-btn:hover {
+            background-color: #A31E1E;
+            transform: scale(1.05);
+        }
+
+        /* Scroll-to-top Button */
+        #scroll-to-top {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            z-index: 999;
+            border: none;
+            outline: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-light);
+            transition: background-color 0.3s;
+        }
+
+        #scroll-to-top:hover {
+            background-color: var(--color-primary-red);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            section { padding: 3rem 5%; }
+            
+            .hero-tagline { font-size: 2rem; }
+            .hero-buttons { display: flex; flex-direction: column; gap: 1rem; }
+            .hero-buttons .btn { margin: 0; }
+            
+            .about-content { flex-direction: column; }
+            .about-image { display: none; /* Hide image for simplicity on mobile */ }
+            
+            .contact-content { flex-direction: column; gap: 2rem; }
+
+            .order-form .form-group { flex-direction: column; gap: 0; }
+            .order-form-radio { justify-content: space-around; }
+
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="https://www.facebook.com/share/14V1kkztPJ8/" target="_blank" id="floating-order-btn">
+        ORDER NOW!
+    </a>
+
+    <header style="background-color: var(--color-white); padding: 1rem 10%; box-shadow: var(--shadow-light); position: sticky; top: 0; z-index: 100;">
+        <nav class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="#hero" class="header-logo-container">
+                <img src="misubae-logo.png.png" alt="Misubae Small Logo">
+                <span style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--color-primary-red); text-decoration: none;">Misubae</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" class="btn" style="background: none; color: var(--color-primary-red); padding: 0.5rem;">About</a>
+                <a href="#menu" class="btn" style="background: none; color: var(--color-primary-red); padding: 0.5rem;">Menu</a>
+                <a href="#order-online" class="btn" style="background: none; color: var(--color-primary-red); padding: 0.5rem;">Order</a>
+                <a href="#contact" class="btn" style="background: none; color: var(--color-primary-red); padding: 0.5rem;">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-logo">
+            <img src="misubae-logo.png.png" alt="Misubae Logo - Musubi Japanese Food EST 2025">
+        </div>
+        <h1 class="hero-tagline">
+            Your Favorite Musubi, Your Everyday Bae!
+        </h1>
+        <div class="hero-buttons">
+            <a href="#menu" class="btn">View Menu</a>
+            <a href="https://www.facebook.com/share/14V1kkztPJ8/" target="_blank" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="text-center">🍙 Our Story: Misubae</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Misubae was born from a simple yet passionate idea: to combine the comforting simplicity of **Japanese musubi** with the bold, savory flavors of the **Filipino palate**. We're a fusion food business dedicated to crafting the perfect handheld rice snack.
+                </p>
+                <p style="margin-top: 1rem;">
+                    We emphasize **freshness**—each piece is made to order, ensuring maximum flavor. We believe delicious, satisfying food shouldn't break the bank, making Misubae the **affordable**, quick, and satisfying bite perfect for students, workers, and anyone on the go.
+                </p>
+                <div class="about-quote">
+                    <p>“We believe great food brings people together — one musubi at a time.”</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2 class="text-center">✨ The Bae Menu ✨</h2>
+        <div class="menu-grid">
+            
+            <div class="menu-card">
+                <div class="menu-card-image og">
+                    <img src="og-teriyaki.jpg.png" alt="OG Teriyaki Musubi">
+                </div>
+                <div class="menu-card-body">
+                    <h3>OG Teriyaki</h3>
+                    <p class="menu-card-desc">Sweet and savory perfection. The timeless classic that started it all.</p>
+                    <p class="menu-card-price">₱40</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image egg">
+                    <img src="egglicious.jpg.png" alt="Egglicious Musubi">
+                </div>
+                <div class="menu-card-body">
+                    <h3>🍳 Egglicious</h3>
+                    <p class="menu-card-desc">Soft egg with flavorful rice. A morning favorite, perfect anytime!</p>
+                    <p class="menu-card-price">₱45</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image cheese">
+                    <img src="cheesylicious.jpg.png" alt="Cheesylicious Musubi">
+                </div>
+                <div class="menu-card-body">
+                    <h3>🧀 Cheesylicious</h3>
+                    <p class="menu-card-desc">Creamy and melty goodness. A cheesy, satisfying indulgence.</p>
+                    <p class="menu-card-price">₱55</p>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-card-image spicy">
+                    <img src="hot-n-spicy.jpg.png" alt="Hot n Spicy Musubi">
+                </div>
+                <div class="menu-card-body">
+                    <h3>🌶 Hot n Spicy</h3>
+                    <p class="menu-card-desc">A bold kick in every bite. Turn up the heat for an exciting snack!</p>
+                    <p class="menu-card-price">₱55</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-order-btn">
+            <a href="https://m.me/14V1kkztPJ8" target="_blank" class="btn">Message to Order (Facebook Messenger)</a>
+        </div>
+    </section>
+
+    <section id="order-online">
+        <h2 class="text-center">🛒 Order Your Bae Today!</h2>
+        <div class="order-form-container">
+            <form class="order-form" id="misubaeOrderForm">
+                
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <div class="form-group">
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                </div>
+
+                <label for="flavor">Select Flavor</label>
+                <select id="flavor" name="flavor" required>
+                    <option value="">-- Choose Your Musubi Flavor --</option>
+                    <option value="OG Teriyaki">OG Teriyaki (₱40)</option>
+                    <option value="Egglicious">Egglicious (₱45)</option>
+                    <option value="Cheesylicious">Cheesylicious (₱55)</option>
+                    <option value="Hot n Spicy">Hot n Spicy (₱55)</option>
+                </select>
+
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+                <label>Pick-up or Delivery</label>
+                <div class="order-form-radio">
+                    <div>
+                        <input type="radio" id="pickup" name="option" value="Pick-up" checked>
+                        <label for="pickup" style="display: inline;">Pick-up</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="delivery" name="option" value="Delivery">
+                        <label for="delivery" style="display: inline;">Delivery</label>
+                    </div>
+                </div>
+
+                <label for="notes">Message/Notes (Address for Delivery)</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Submit Order</button>
+            </form>
+            
+            <div id="confirmation-message" class="confirmation-message">
+                Thank you for ordering from Misubae! We’ll get back to you shortly.
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="text-center">📸 Misubae Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="gallery1.jpg.jpg" alt="Misubae Musubi Product Photo">
+                <div class="gallery-caption">Snack Time with Bae!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery2.jpg.jpg" alt="Cheesy Musubi Pull">
+                <div class="gallery-caption">Freshly Made, Always Misubae!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery3.jpg.jpg" alt="Musubi Lineup">
+                <div class="gallery-caption">Snack Time with Bae!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery4.jpg.jpg" alt="Musubi Prep">
+                <div class="gallery-caption">Freshly Made, Always Misubae!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery5.jpg.png" alt="Customer Photo 1">
+                <div class="gallery-caption">Snack Time with Bae!</div>
+            </div>
+            <div class="gallery-item">
+                <img src="gallery6.jpg.png" alt="Customer Photo 2">
+                <div class="gallery-caption">Freshly Made, Always Misubae!</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="text-center">👋 Let's Connect</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div>
+                    <i class="fas fa-phone"></i> **Phone:** <a href="tel:09399351588">09399351588</a>
+                </div>
+                <div>
+                    <i class="fas fa-envelope"></i> **Email:** <a href="mailto:misubae1021@gmail.com">misubae1021@gmail.com</a>
+                </div>
+                <h3 style="margin-top: 2rem;">Follow Our Journey</h3>
+                <div>
+                    <i class="fab fa-instagram"></i> **Instagram:** <a href="https://www.instagram.com/_misubae_?igsh=MXA3ZHZzYnlzNGYycQ==" target="_blank">@misubae</a>
+                </div>
+                <div>
+                    <i class="fab fa-facebook-f"></i> **Facebook:** <a href="https://www.facebook.com/share/17F9XzWgGv/" target="_blank">Misubae</a>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <h3>Send Us an Inquiry</h3>
+                <form class="contact-form" id="misubaeContactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message or Inquiry" rows="4" required></textarea>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-slogan">Made with Love, Wrapped for Your Bae.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/_misubae_?igsh=MXA3ZHZzYnlzNGYycQ==" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/share/14V1kkztPJ8/" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+        <p class="footer-copyright">
+            © 2025 Misubae. All Rights Reserved.
+        </p>
+    </footer>
+    
+    <button onclick="topFunction()" id="scroll-to-top" title="Go to top">▲</button>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Order Form Submission (Client-side simulation)
+        document.getElementById('misubaeOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+            
+            const emailBody = `
+                New Order from Misubae Website!
+                ------------------------------
+                Full Name: ${data.fullName}
+                Phone: ${data.phone}
+                Email: ${data.email}
+                Flavor: ${data.flavor}
+                Quantity: ${data.quantity}
+                Option: ${data.option}
+                Notes: ${data.notes}
+            `;
+            
+            console.log('Simulated Order Submission (would be sent to misubae1021@gmail.com):', emailBody);
+
+            // Show Confirmation Message
+            document.getElementById('confirmation-message').style.display = 'block';
+            this.reset(); // Clear the form
+            
+            // Hide confirmation message after a few seconds
+            setTimeout(() => {
+                document.getElementById('confirmation-message').style.display = 'none';
+            }, 7000);
+        });
+
+        // Contact Form Submission (Client-side simulation for Gmail)
+        document.getElementById('misubaeContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert("Message Sent! Thank you for your inquiry. We'll get back to you shortly.");
+            this.reset(); 
+        });
+
+
+        // Scroll-to-top button logic
+        let mybutton = document.getElementById("scroll-to-top");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+</body>
+</html>
